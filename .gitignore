@@ -1,0 +1,11 @@
+
+*.xml
+*.pyc
+*.pyc
+*.pyc
+helloworld/__pycache__/settings.cpython-311.pyc
+helloworld/__pycache__/wsgi.cpython-311.pyc
+*.pyc
+*.pyc
+*.pyc
+*.iml
