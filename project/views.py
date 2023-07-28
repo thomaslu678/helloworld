@@ -13,7 +13,7 @@ def home(request):
     context = {
         'foods': FoodItem.objects.all()
     }
-    return render(request, 'project/home2.html', context)
+    return render(request, 'project/home.html', context)
 
 def data(request):
     return render(request, 'project/traveler-map.html')
