@@ -150,6 +150,7 @@ if check_password():
     st.write(entity.phone_number)
     st.write(entity.latitude)
     st.write(entity.longitude)
+    st.write(entity.address)
 
     # Show cluster scatter plot
     st.write(run_kmeans(df, n_clusters=n_clusters))
