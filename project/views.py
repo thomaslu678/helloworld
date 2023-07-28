@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from.models import Food
+from.models import FoodItem
 
 # -------------------
 import streamlit as st
@@ -11,7 +11,7 @@ import pandas as pd
 
 def home(request):
     context = {
-        'foods': Food.objects.all()
+        'foods': FoodItem.objects.all()
     }
     return render(request, 'project/home2.html', context)
 
