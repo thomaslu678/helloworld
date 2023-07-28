@@ -23,23 +23,35 @@ class Entity(models.Model):
     address = models.CharField(max_length=100, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
 
-    class Producer(models.Model):
-        description = models.TextField()
-        deliveries = models.IntegerField(default=0)
-        usda_certified = models.BooleanField(null=True)
-        image_link = models.TextField(blank=True)
-        website_link = models.TextField(blank=True)
+    def __str__(self):
+        return self.user.__str__()
 
-    class Volunteer(models.Model):
-        deliveries = models.IntegerField(default=0)
+class Producer(models.Model):
+    entity = models.OneToOneField(Entity, on_delete=models.CASCADE)
+    description = models.TextField()
+    deliveries = models.IntegerField(default=0)
+    usda_certified = models.BooleanField(null=True)
+    image_link = models.TextField(blank=True)
+    website_link = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.entity.__str__()
+
+class Volunteer(Entity):
+
+    # entity = models.OneToOneField(Entity, on_delete=models.CASCADE)
+    deliveries = models.IntegerField(default=0)
 
 class FoodItem(models.Model):
     name = models.CharField(max_length=100)
     type = models.ForeignKey(FoodType, on_delete=models.CASCADE)
     description = models.TextField()
-    producer = models.ForeignKey(Entity.Producer, on_delete=models.CASCADE)
+    producer = models.ForeignKey(Producer, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=True, blank=True)
     consumable = models.BooleanField(null=True)
     date_posted = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.producer.__str__() + ": " + self.name
 
 
