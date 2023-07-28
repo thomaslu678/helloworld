@@ -20,7 +20,7 @@ class Entity(models.Model):
     longitude = models.DecimalField(
         max_digits=20,
         decimal_places=15)
-    address = models.CharField(max_length=100)
+    address = models.CharField(max_length=100, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
 
     class Producer(models.Model):
